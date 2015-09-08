@@ -1,8 +1,8 @@
 # NativeScript + AngularJS TodoMVC example
 
-This is a sample project implementing the famous TodoMVC example using NativeScript and AngularJS
+This is a sample project implementing the famous TodoMVC example using NativeScript and AngularJS 2
 
-# Set up prerequisites
+# Prepare project
 
 You need to prepare the NativeScript distribution in the parent folder by executing all steps in the parent README:
 
@@ -11,15 +11,9 @@ You need to prepare the NativeScript distribution in the parent folder by execut
 1. Update git submodules.
 2. Install dependencies.
 3. `npm install`
-4. Install angular2 tsd typings.
-5. `grunt prepare`
+4. `grunt prepare`
+5. `tsd reinstall`
 
-# Set up the project
-
-0. `cd todomvc`
-1. `npm install`
-2. `tsd reinstall`
-3. `tns platform add android`
 
 # Compile
 
