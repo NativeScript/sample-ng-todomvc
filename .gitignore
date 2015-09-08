@@ -1,0 +1,11 @@
+bin/dist
+node_modules
+tags
+typings
+baseDir.ts
+.tscache
+
+app
+platforms
+lib
+src/angular2

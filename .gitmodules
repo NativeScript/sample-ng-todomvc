@@ -1,0 +1,3 @@
+[submodule "deps/NativeScript"]
+	path = deps/NativeScript
+	url = git@github.com:hdeshev/NativeScript.git
