@@ -7,11 +7,6 @@ module.exports = function(grunt) {
 
     var nsDistPath = process.env.NSDIST || './deps/NativeScript/bin/dist';
 
-    var modulesPath = grunt.option("modulesPath", path.join(nsDistPath, 'modules'));
-    var typingsPath = grunt.option("typingsPath", path.join(nsDistPath, 'definitions'));
-    var angularSrcPath = grunt.option("angularSrcPath") || "../src"
-    var rendererPath = grunt.option("rendererPath") || "../bin/dist/modules/nativescript-angular";
-
     var modulesDestPath = "app/tns_modules";
     var typingsDestPath = "typings/nativescript";
 
@@ -50,44 +45,6 @@ module.exports = function(grunt) {
                 ],
                 dest: 'app'
             },
-            //typingsFiles: {
-                //expand: true,
-                //cwd: typingsPath,
-                //src: [
-                    //'**/*.d.ts',
-                    //'!node-tests/**/*',
-                    //'!es6-promise.d.ts',
-                    ////'!es-collections.d.ts',
-                //],
-                //dest: typingsDestPath
-            //},
-            modulesFiles: {
-                expand: true,
-                cwd: modulesPath,
-                src: [
-                    '**/*',
-                    '!**/*.tgz',
-                    '!node_modules',
-                    '!node_modules/**/*',
-                ],
-                dest: modulesDestPath
-            },
-            rendererFiles: {
-                expand: true,
-                cwd: rendererPath,
-                src: [
-                    '**/*',
-                ],
-                dest: path.join(modulesDestPath, 'nativescript-angular')
-            },
-            iosStub: {
-                expand: true,
-                cwd: path.join(nsDistPath, '..', '..'),
-                src: [
-                    'ios-stub.ts',
-                ],
-                dest: typingsDestPath
-            },
         },
         shell: {
             depNSInit: {
@@ -101,6 +58,9 @@ module.exports = function(grunt) {
                     }
                 }
             },
+            localInstallModules: {
+                command: "npm install '" + nsDistPath + "'/tns-core-modules*.tgz"
+            },
             emulateGeny: {
                 command: "tns emulate android --geny '" + genyDevice +"'"
             },
@@ -110,42 +70,12 @@ module.exports = function(grunt) {
             emulateIOS: {
                 command: "tns emulate ios --device '" + iOSDevice +"'"
             }
-
         }
     });
-
-    grunt.registerTask("checkModules", function() {
-        if (!grunt.file.exists(modulesPath)) {
-            grunt.fail.fatal("Modules path does not exist.");
-        }
-    });
-
-    //grunt.registerTask("checkTypings", function() {
-        //if (!grunt.file.exists(typingsPath)) {
-            //grunt.fail.fatal("Typings path does not exist.");
-        //}
-    //});
-
-    //grunt.registerTask("checkAngular", function() {
-        //if (!grunt.file.exists(path.join(angularSrcPath, 'nativescript-angular'))) {
-            //grunt.fail.fatal("nativescript-angular path does not exist.");
-        //}
-    //});
 
     grunt.registerTask("updateModules", [
-        "checkModules",
-        "copy:modulesFiles",
+        "shell:localInstallModules",
     ]);
-
-    //grunt.registerTask("updateRenderer", [
-        //"copy:rendererFiles",
-    //]);
-
-    //grunt.registerTask("updateTypings", [
-        //"checkTypings",
-        //"copy:typingsFiles",
-        ////"copy:iosStub",
-    //]);
 
     grunt.registerTask("removeAppDir", function() {
         grunt.file.delete("app");
@@ -158,21 +88,17 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask("app", [
-        //"checkAngular",
         "copy:appFiles",
         "ts:build",
     ]);
 
-
     grunt.registerTask("prepare", [
         "shell:depNSInit",
+        "updateModules",
     ]);
 
     grunt.registerTask("app-full", [
         "clean",
-        //"updateTypings",
-        "updateModules",
-        //"updateRenderer",
         "app",
     ]);
 
@@ -181,6 +107,6 @@ module.exports = function(grunt) {
 
     grunt.registerTask("clean", [
         "removeAppDir",
-        "removeTraceurPackage"
+        //"removeTraceurPackage"
     ]);
 }
