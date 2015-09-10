@@ -3,6 +3,7 @@ var path = require("path");
 module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-ts');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-shell');
 
     var nsDistPath = process.env.NSDIST || './deps/NativeScript/bin/dist';
@@ -46,6 +47,21 @@ module.exports = function(grunt) {
                 dest: 'app'
             },
         },
+        clean: {
+            app: {
+                src: 'app'
+            },
+            nodeModulesGz: {
+                // HACK: Work around a {N} CLI bug  that prevents you from using
+                // NPM packages containing *.gz files.
+                // https://github.com/NativeScript/nativescript-cli/issues/393
+                expand: true,
+                cwd: './node_modules',
+                src: [
+                    '**/*.gz',
+                ]
+            },
+        },
         shell: {
             depNSInit: {
                 command: [
@@ -77,10 +93,6 @@ module.exports = function(grunt) {
         "shell:localInstallModules",
     ]);
 
-    grunt.registerTask("removeAppDir", function() {
-        grunt.file.delete("app");
-    });
-
     grunt.registerTask("removeTraceurPackage", function() {
         var traceurPath = 'node_modules/angular2/node_modules/traceur';
         if (grunt.file.isDir(traceurPath))
@@ -95,18 +107,14 @@ module.exports = function(grunt) {
     grunt.registerTask("prepare", [
         "shell:depNSInit",
         "updateModules",
+        "clean:nodeModulesGz",
     ]);
 
     grunt.registerTask("app-full", [
-        "clean",
+        "clean:app",
         "app",
     ]);
 
     grunt.registerTask("run-android", ["app", "shell:emulateAndroid"])
     grunt.registerTask("run-ios", ["app", "shell:emulateIOS"])
-
-    grunt.registerTask("clean", [
-        "removeAppDir",
-        //"removeTraceurPackage"
-    ]);
 }

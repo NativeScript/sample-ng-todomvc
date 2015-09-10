@@ -24,7 +24,6 @@ You need to prepare the NativeScript distribution in the parent folder by execut
 3. `npm install`
 4. `grunt prepare`
 5. Fetch TypeScript declarations: `tsd reinstall && tsd link`
-6. Work around [a bug](https://github.com/NativeScript/nativescript-cli/issues/393) that prevents you from using NPM packages containing `*.gz` files by removing all such files below your `node_modules` dir: `find node_modules -iname '*.gz' -exec rm -rf \{\} \;`
 
 # Install runtimes
 
