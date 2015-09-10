@@ -10,8 +10,9 @@ The sample uses a pre-release version of NativeScript that you need to download 
 * tns-android-1.3.0.tgz
 * tns-ios-1.3.0-2015.9.8.1.tgz
 
-1. Install the `tns` command line tool **locally**: `npm install 1.3/nativescript-1.3.0.tgz`
-2. Alias `n` to prefer local `node_modules` binaries: `alias n='PATH=$(npm bin):$PATH'`. Test it with `n tns --version`, and make sure you get back `1.3.0`.
+Install/Upgrade the `tns` command line tool:
+
+`npm install -g --upgrade 1.3/nativescript-1.3.0.tgz`
 
 # Prepare project
 
@@ -25,10 +26,10 @@ You need to prepare the NativeScript distribution in the parent folder by execut
 4. `grunt prepare`
 5. Fetch TypeScript declarations: `tsd reinstall && tsd link`
 
-# Install runtimes
+# Add platforms(s)
 
-1. `n tns platform add android --frameworkPath 1.3/tns-android-1.3.0.tgz`
-1. `n tns platform add ios --frameworkPath 1.3/tns-ios-1.3.0.tgz`
+1. `tns platform add android --framework-path 1.3/tns-android-1.3.0.tgz`
+1. `tns platform add ios --framework-path 1.3/tns-ios-1.3.0.tgz`
 
 # Compile
 
