@@ -19,10 +19,9 @@ module.exports = function(grunt) {
         ts: {
             build: {
                 src: [
-                    'src/**/*.ts',
+                    'app/**/*.ts',
                     'typings/tsd.d.ts',
                 ],
-                dest: 'app',
                 options: {
                     fast: "never",
                     module: "commonjs",
@@ -37,19 +36,15 @@ module.exports = function(grunt) {
             },
         },
         copy: {
-            appFiles: {
-                expand: true,
-                cwd: 'src',
-                src: [
-                    '**/*',
-                    '!**/*.ts',
-                ],
-                dest: 'app'
-            },
         },
         clean: {
             app: {
-                src: 'app'
+                cwd: 'app',
+                expand: true,
+                src: [
+                    '**/*.js',
+                    '**/*.map',
+                ]
             },
             nodeModulesGz: {
                 // HACK: Work around a {N} CLI bug  that prevents you from using
@@ -100,7 +95,6 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask("app", [
-        "copy:appFiles",
         "ts:build",
     ]);
 
