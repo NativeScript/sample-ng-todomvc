@@ -6,9 +6,7 @@ import {Inject, Component, View, NgIf, NgFor} from 'angular2/angular2';
 import {TodoStore, Todo} from './services/store';
 
 @Component({
-	selector: 'main',
-	hostAttributes: {
-	}
+	selector: 'main'
 })
 @View({
     directives: [NgIf, NgFor],
