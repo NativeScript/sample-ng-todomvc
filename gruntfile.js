@@ -67,7 +67,7 @@ module.exports = function(grunt) {
             depNSInit: {
                 command: [
                     'npm install',
-                    'grunt compile-ts pack-modules distribute-definition-files get-ready-packages --no-runtslint',
+                    'grunt --no-runtslint',
                 ].join('&&'),
                 options: {
                     execOptions: {
