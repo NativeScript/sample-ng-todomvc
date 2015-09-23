@@ -67,7 +67,7 @@ module.exports = function(grunt) {
             depNSInit: {
                 command: [
                     'npm install',
-                    'grunt --no-runtslint',
+                    'grunt compile-ts pack-modules distribute-definition-files get-ready-packages --no-runtslint',
                 ].join('&&'),
                 options: {
                     execOptions: {
@@ -76,7 +76,7 @@ module.exports = function(grunt) {
                 }
             },
             localInstallModules: {
-                command: "npm install '" + nsDistPath + "'/tns-core-modules*.tgz"
+                command: "npm install \"" + nsDistPath + "\"/tns-core-modules*.tgz"
             },
             emulateGeny: {
                 command: "tns emulate android --geny '" + genyDevice +"'"
