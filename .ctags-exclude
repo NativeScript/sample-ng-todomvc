@@ -1,0 +1,6 @@
+node_modules
+bin
+platforms
+
+deps/NativeScript/node_modules
+deps/NativeScript/bin
