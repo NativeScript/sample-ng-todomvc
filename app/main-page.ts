@@ -23,7 +23,7 @@ import {TodoStore, Todo} from './services/store';
                 <DockLayout *ng-if="!todo.editing" stretchLastChild="true">
                     <Button
                         width="50px"
-                        text="[X]"
+                        [text]="todo.completed ? '[X]' : '[ ]'"
                         (tap)="toggleCompletion(todo)"
                         dock="left"></Button>
                     <Label
