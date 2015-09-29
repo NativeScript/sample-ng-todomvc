@@ -115,7 +115,7 @@ module.exports = function(grunt) {
     grunt.registerTask("clean-tsd-dts", function() {
         //remove broken angular dts files from tsd.d.ts
         //using the ones in the typings dir
-        shelljs.sed('-i', /.*node_modules[\/\\]angular2.*\n/, '', 'typings/tsd.d.ts');
+        shelljs.sed('-i', /.*node_modules[\/\\]angular2.*\n/g, '', 'typings/tsd.d.ts');
     });
 
     grunt.registerTask("app", [
