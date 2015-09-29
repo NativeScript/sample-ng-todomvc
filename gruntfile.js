@@ -76,7 +76,7 @@ module.exports = function(grunt) {
                 }
             },
             localInstallModules: {
-                command: "npm install \"" + nsDistPath + "\"/tns-core-modules*.tgz"
+                command: "npm install \"<%= nsPackagePath %>\""
             },
             emulateGeny: {
                 command: "tns emulate android --geny '" + genyDevice +"'"
@@ -91,6 +91,7 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask("updateModules", [
+        "getNSPackage",
         "shell:localInstallModules",
     ]);
 
@@ -98,6 +99,16 @@ module.exports = function(grunt) {
         var traceurPath = 'node_modules/angular2/node_modules/traceur';
         if (grunt.file.isDir(traceurPath))
             grunt.file.delete(traceurPath);
+    });
+
+    grunt.registerTask("getNSPackage", function() {
+        var packageFiles = grunt.file.expand({
+            cwd: nsDistPath
+        },[
+            'tns-core-modules*.tgz'
+        ]);
+        var nsPackagePath = path.join(nsDistPath, packageFiles[0]);
+        grunt.config('nsPackagePath', nsPackagePath);
     });
 
     grunt.registerTask("app", [
