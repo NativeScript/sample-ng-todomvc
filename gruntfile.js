@@ -135,5 +135,6 @@ module.exports = function(grunt) {
     ]);
 
     grunt.registerTask("run-android", ["app", "shell:emulateAndroid"])
+    grunt.registerTask("run-geny", ["app", "shell:emulateGeny"])
     grunt.registerTask("run-ios", ["app", "shell:emulateIOS"])
 }
