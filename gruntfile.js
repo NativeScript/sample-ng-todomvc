@@ -1,4 +1,5 @@
 var path = require("path");
+var shelljs = require("shelljs");
 
 module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-ts');
@@ -111,7 +112,14 @@ module.exports = function(grunt) {
         grunt.config('nsPackagePath', nsPackagePath);
     });
 
+    grunt.registerTask("clean-tsd-dts", function() {
+        //remove broken angular dts files from tsd.d.ts
+        //using the ones in the typings dir
+        shelljs.sed('-i', /.*node_modules[\/\\]angular2.*\n/, '', 'typings/tsd.d.ts');
+    });
+
     grunt.registerTask("app", [
+        "clean-tsd-dts",
         "ts:build",
     ]);
 
