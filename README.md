@@ -13,8 +13,6 @@ You need to prepare the NativeScript distribution in the parent folder by execut
 3. `grunt prepare`
 4. Fetch TypeScript declarations: `tsd reinstall && tsd link`
 
-    > For the time being the tsd tool automatically adds extra references to the `typings/tsd.d.ts` file. Please, clean the following references manually:<br>- ../node_modules/angular2/bundles/typings/angular2/angular2.d.ts<br>- ../node_modules/angular2/bundles/typings/angular2/http.d.ts<br>- ../node_modules/angular2/bundles/typings/angular2/router.d.ts
-
 # Add platforms(s)
 
 1. `tns platform add android`
@@ -23,7 +21,7 @@ You need to prepare the NativeScript distribution in the parent folder by execut
 # Compile
 
 ```sh
-grunt app-full
+grunt app
 ```
 
 # Run in the emulator
