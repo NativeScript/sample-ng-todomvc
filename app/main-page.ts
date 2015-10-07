@@ -4,12 +4,13 @@ import {topmost} from 'ui/frame';
 import {nativeScriptBootstrap} from 'nativescript-angular/application';
 import {Inject, Component, View, NgIf, NgFor} from 'angular2/angular2';
 import {TodoStore, Todo} from './services/store';
+import {Checkbox} from './checkbox';
 
 @Component({
 	selector: 'main'
 })
 @View({
-    directives: [NgIf, NgFor],
+    directives: [NgIf, NgFor, Checkbox],
 	template: `
 <StackLayout orientation='vertical'>
     <Label text='ng-todo' class='title complete'></Label>
@@ -21,11 +22,7 @@ import {TodoStore, Todo} from './services/store';
             (doubleTap)="edit(todo)"
             >
                 <DockLayout *ng-if="!todo.editing" stretchLastChild="true">
-                    <Button
-                        width="50px"
-                        [text]="todo.completed ? '[X]' : '[ ]'"
-                        (tap)="toggleCompletion(todo)"
-                        dock="left"></Button>
+                    <Checkbox [checked]="todo.completed" (tap)="toggleCompletion(todo)"></Checkbox>
                     <Label
                         [class.complete]="todo.completed"
                         [class.incomplete]="!todo.completed"
