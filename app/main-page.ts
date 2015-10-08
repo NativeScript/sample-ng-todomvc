@@ -6,8 +6,10 @@ import {Inject, Component, View, NgIf, NgFor} from 'angular2/angular2';
 import {TodoStore, Todo} from './services/store';
 import {Checkbox} from './checkbox';
 
+
 @Component({
-	selector: 'main'
+	selector: 'main',
+    bindings: [TodoStore]
 })
 @View({
     directives: [NgIf, NgFor, Checkbox],
@@ -57,10 +59,7 @@ import {Checkbox} from './checkbox';
 `,
 })
 class MainPage {
-	todoStore: TodoStore;
-
-	constructor() {
-		this.todoStore = new TodoStore();
+	constructor(private  todoStore: TodoStore) {
         this.todoStore.add("item 1", true);
         this.todoStore.add("item 2", false);
 	}
