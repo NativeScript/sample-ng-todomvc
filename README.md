@@ -8,7 +8,7 @@ You need to prepare the NativeScript distribution in the parent folder by execut
 
 (All run from the parent folder once.)
 
-1. Update git submodules: `git submodule update --init`.
+1. Update git submodules: `git submodule update --init --recursive`.
 2. `npm install`
 3. `grunt prepare`
 4. Fetch TypeScript declarations: `tsd reinstall && tsd link`
