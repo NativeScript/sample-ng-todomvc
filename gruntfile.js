@@ -9,7 +9,6 @@ module.exports = function(grunt) {
 
     var nsDistPath = process.env.NSDIST || './deps/NativeScript/bin/dist';
     var nsCLIPath = process.env.NSCLI || './deps/nativescript-cli';
-    console.log('CLI: ' + nsCLIPath);
 
     var cliBuildEnv = JSON.parse(JSON.stringify(process.env));
     cliBuildEnv['BUILD_NUMBER'] = 'angular2';
