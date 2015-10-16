@@ -119,7 +119,6 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask("app", [
-        "clean-tsd-dts",
         "ts:build",
     ]);
 
