@@ -8,6 +8,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-shell');
 
     var nsDistPath = process.env.NSDIST || './deps/NativeScript/bin/dist';
+    var nsCLIPath = process.env.NSCLI || './deps/nativescript-cli';
+    console.log('CLI: ' + nsCLIPath);
+
+    var cliBuildEnv = JSON.parse(JSON.stringify(process.env));
+    cliBuildEnv['BUILD_NUMBER'] = 'angular2';
 
     var modulesDestPath = "app/tns_modules";
     var typingsDestPath = "typings/nativescript";
@@ -76,8 +81,23 @@ module.exports = function(grunt) {
                     }
                 }
             },
+            depNSCLIInit: {
+                command: [
+                    'npm install',
+                    'grunt pack',
+                ].join('&&'),
+                options: {
+                    execOptions: {
+                        cwd: 'deps/nativescript-cli',
+                        env: cliBuildEnv,
+                    }
+                }
+            },
             localInstallModules: {
                 command: "npm install \"<%= nsPackagePath %>\""
+            },
+            localInstallCLI: {
+                command: "npm install -g \"<%= nsCLIPath %>\" --upgrade"
             },
             emulateGeny: {
                 command: "tns emulate android --geny '" + genyDevice +"'"
@@ -96,6 +116,11 @@ module.exports = function(grunt) {
         "shell:localInstallModules",
     ]);
 
+    grunt.registerTask("updateCLI", [
+        "getCLIPackage",
+        "shell:localInstallCLI",
+    ]);
+
     grunt.registerTask("removeTraceurPackage", function() {
         var traceurPath = 'node_modules/angular2/node_modules/traceur';
         if (grunt.file.isDir(traceurPath))
@@ -112,6 +137,16 @@ module.exports = function(grunt) {
         grunt.config('nsPackagePath', nsPackagePath);
     });
 
+    grunt.registerTask("getCLIPackage", function() {
+        var packageFiles = grunt.file.expand({
+            cwd: nsCLIPath
+        },[
+            'nativescript-*.tgz'
+        ]);
+        var nsCLIPackage = path.join(nsCLIPath, packageFiles[0]);
+        grunt.config('nsCLIPath', nsCLIPackage);
+    });
+
     grunt.registerTask("clean-tsd-dts", function() {
         //remove broken angular dts files from tsd.d.ts
         //using the ones in the typings dir
@@ -123,6 +158,8 @@ module.exports = function(grunt) {
     ]);
 
     grunt.registerTask("prepare", [
+        "shell:depNSCLIInit",
+        "updateCLI",
         "shell:depNSInit",
         "updateModules",
         "clean:nodeModulesGz",
