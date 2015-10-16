@@ -16,7 +16,7 @@ You need to prepare the NativeScript distribution in the parent folder by execut
 # Add platforms(s)
 
 1. `tns platform add android`
-2. (iOS support requires a version build against the latest master branch.)
+2. `tns platform add ios`
 
 # Compile
 
