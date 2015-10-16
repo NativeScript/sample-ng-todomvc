@@ -65,7 +65,7 @@ class MainPage {
 	}
 
     addNew(eventData) {
-        this.todoStore.add("fafla", false); 
+        this.todoStore.add("new task", false);
     }
 
     toggleSelected(todo: Todo) {
