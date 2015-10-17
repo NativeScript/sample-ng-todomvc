@@ -157,11 +157,19 @@ module.exports = function(grunt) {
     ]);
 
     grunt.registerTask("prepare", [
-        "shell:depNSCLIInit",
-        "updateCLI",
+        "prepare-cli",
+        "prepare-modules",
+        "clean:nodeModulesGz",
+    ]);
+
+    grunt.registerTask("prepare-modules", [
         "shell:depNSInit",
         "updateModules",
-        "clean:nodeModulesGz",
+    ]);
+
+    grunt.registerTask("prepare-cli", [
+        "shell:depNSCLIInit",
+        "updateCLI",
     ]);
 
     grunt.registerTask("app-full", [
