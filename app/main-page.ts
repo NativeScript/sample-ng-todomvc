@@ -2,14 +2,26 @@ import 'reflect-metadata';
 import {TextView} from 'ui/text-view';
 import {topmost} from 'ui/frame';
 import {nativeScriptBootstrap} from 'nativescript-angular/application';
-import {Inject, Component, View, NgIf, NgFor} from 'angular2/angular2';
+import {bind, Inject, Component, View, NgIf, NgFor} from 'angular2/angular2';
+//import {Http, XHRBackend, ConnectionBackend} from 'angular2/http';
+import {HTTP_BINDINGS, Http, BaseRequestOptions, RequestOptions, URLSearchParams} from 'angular2/http';
 import {TodoStore, Todo} from './services/store';
 import {Checkbox} from './checkbox';
 
+class TestRequestOptions extends BaseRequestOptions {
+    search: URLSearchParams = new URLSearchParams('q=test');
+    body: string = null;
+}
 
 @Component({
 	selector: 'main',
-    bindings: [TodoStore]
+    bindings: [
+        TodoStore,
+        bind(RequestOptions).toClass(TestRequestOptions),
+        //[XHRBackend],
+        //[ConnectionBackend, XHRBackend],
+        //Http
+    ]
 })
 @View({
     directives: [NgIf, NgFor, Checkbox],
@@ -59,7 +71,14 @@ import {Checkbox} from './checkbox';
 `,
 })
 class MainPage {
-	constructor(private  todoStore: TodoStore) {
+	constructor(private  todoStore: TodoStore, private http: Http) {
+        console.log('new connection');
+        http.get('http://httpbin.org/get?name=Jim').subscribe(res => {
+            console.log('got response!');
+            console.log(res.text());
+            return res;
+        });
+
         this.todoStore.add("item 1", true);
         this.todoStore.add("item 2", false);
 	}
@@ -96,7 +115,7 @@ export function pageLoaded(args) {
     page.bindingContext = "";
 
     console.log('BOOTSTRAPPING...');
-    nativeScriptBootstrap(MainPage, []).then((appRef) => {
+    nativeScriptBootstrap(MainPage, [HTTP_BINDINGS]).then((appRef) => {
         console.log('ANGULAR BOOTSTRAP DONE.');
     }, (err) =>{
         console.log('ERROR BOOTSTRAPPING ANGULAR');
