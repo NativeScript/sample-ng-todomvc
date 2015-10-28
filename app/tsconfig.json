@@ -1,0 +1,31 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "experimentalDecorators": true,
+        "target": "es5",
+        "noImplicitAny": false,
+        "outDir": "built",
+        "rootDir": ".",
+        "sourceMap": true,
+        "removeComments": false,
+        "emitDecoratorMetadata": true,
+        "noEmitOnError": true
+    },
+    "exclude": [
+        "node_modules"
+    ],
+    "filesGlob": [
+        "**/*.ts",
+        "../typings/tsd.d.ts"
+    ],
+    "files": [
+        "android17-dummy.d.ts",
+        "app.ts",
+        "checkbox.ts",
+        "dependencies.d.ts",
+        "ios-dummy.d.ts",
+        "main-page.ts",
+        "services/store.ts",
+        "../typings/tsd.d.ts"
+    ]
+}
