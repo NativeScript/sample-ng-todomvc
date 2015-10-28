@@ -1,4 +1,3 @@
-import 'reflect-metadata';
 import {TextView} from 'ui/text-view';
 import {topmost} from 'ui/frame';
 import {nativeScriptBootstrap} from 'nativescript-angular/application';
