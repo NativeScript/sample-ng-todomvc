@@ -30,7 +30,7 @@
 	},
 	"homepage": "https://github.com/NativeScript/nativescript-angular",
 	"dependencies": {
-		"nativescript-angular": "^0.0.13",
+		"nativescript-angular": "^0.0.14",
 		"angular2": "2.0.0-alpha.44",
 		"@reactivex/rxjs": "5.0.0-alpha.4",
 		"parse5": "1.4.2",
