@@ -2,6 +2,14 @@
 
 This is a sample project implementing the famous TodoMVC example using NativeScript and AngularJS 2
 
+# Prerequisites
+
+You need an unofficial `tns` build that supports npm scoped packages. Install it globally by running:
+
+```bash
+$ npm install -g http://sh.deshev.com/npm/nativescript-1.5.0-angular2.tgz
+```
+
 # Prepare project
 
 You need to prepare the NativeScript distribution in the parent folder by executing all steps in the parent README:

@@ -141,7 +141,9 @@ module.exports = function(grunt) {
     ]);
 
     grunt.registerTask("prepare", [
-        "prepare-cli",
+        // tns CLI tool installed via HTTP.
+        // Run prepare-cli manually, if you want to test with a local build.
+        //"prepare-cli",
         "prepare-modules",
         "clean:nodeModulesGz",
     ]);
