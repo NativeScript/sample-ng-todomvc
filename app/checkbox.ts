@@ -3,9 +3,7 @@ import {Component, View, EventEmitter} from "angular2/angular2";
 @Component({
     selector: "Checkbox",
     properties: ['checked : checked'],
-    events: ['tap']
-})
-@View({
+    events: ['tap'],
     template: `
     <Image
         [src]="checked ? 'res://checkbox_checked' : 'res://checkbox_unchecked'"

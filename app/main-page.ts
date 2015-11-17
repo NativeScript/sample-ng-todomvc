@@ -8,9 +8,7 @@ import {Checkbox} from './checkbox';
 
 @Component({
 	selector: 'main',
-    bindings: [TodoStore]
-})
-@View({
+    bindings: [TodoStore],
     directives: [NgIf, NgFor, Checkbox],
 	template: `
 <StackLayout orientation='vertical'>
