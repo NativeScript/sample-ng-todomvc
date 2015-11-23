@@ -14,7 +14,7 @@ import {Component, View, EventEmitter} from "angular2/angular2";
     `
 })
 export class Checkbox {
-    public tap: EventEmitter = new EventEmitter();
+    public tap: EventEmitter<boolean> = new EventEmitter<boolean>();
     public checked: boolean = false;
 
     constructor() {
