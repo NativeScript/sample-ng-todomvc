@@ -2,7 +2,7 @@ node_modules
 built
 tags
 typings
-baseDir.ts
+.baseDir.ts
 .tscache
 
 app/**/*.js

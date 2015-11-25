@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import {TextView} from 'ui/text-view';
 import {topmost} from 'ui/frame';
 import {nativeScriptBootstrap} from 'nativescript-angular/application';
@@ -8,8 +9,8 @@ import {Checkbox} from './checkbox';
 
 @Component({
 	selector: 'main',
-    bindings: [TodoStore],
-    directives: [NgIf, NgFor, Checkbox],
+    providers: [TodoStore],
+    directives: [Checkbox],
 	template: `
 <StackLayout orientation='vertical'>
     <Label text='ng-todo' class='title complete'></Label>
@@ -56,7 +57,10 @@ import {Checkbox} from './checkbox';
 `,
 })
 class MainPage {
-	constructor(private  todoStore: TodoStore) {
+    private  todoStore: TodoStore;
+
+	constructor() {
+        this.todoStore = new TodoStore();
         this.todoStore.add("item 1", true);
         this.todoStore.add("item 2", false);
 	}
