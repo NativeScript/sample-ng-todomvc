@@ -4,43 +4,31 @@ This is a sample project implementing the famous TodoMVC example using NativeScr
 
 # Prerequisites
 
-You need an unofficial `tns` build that supports npm scoped packages. Install it globally by running:
+Install your native toolchain and NativeScript as described in the docs:
 
-```bash
-$ npm install -g http://sh.deshev.com/npm/nativescript-1.5.0-angular2.tgz
-```
+https://docs.nativescript.org/setup/quick-setup
 
 # Prepare project
 
-You need to prepare the NativeScript distribution in the parent folder by executing all steps in the parent README:
-
-(All run from the parent folder once.)
-
-1. Update git submodules: `git submodule update --init --recursive`.
-2. `npm install`
-3. `grunt prepare`
+```sh
+$ npm install
+```
 
 # Add platforms(s)
 
 1. `tns platform add android`
 2. `tns platform add ios`
 
-# Compile
+# Run
+
+Android devices or emulators:
 
 ```sh
-grunt app
+tns run android
 ```
 
-# Run in the emulator
-
-Android SDK emulated device:
+or iOS...
 
 ```sh
-tns emulate android --avd my-nexus7-device
-```
-
-or Genymotion
-
-```sh
-tns emulate android --geny my-nexus7-device
+tns run ios
 ```
