@@ -32,3 +32,4 @@ or iOS...
 ```sh
 tns run ios
 ```
+![](https://ga-beacon.appspot.com/UA-111455-24/nativescript/sample-ng-todomvc?pixel) 
