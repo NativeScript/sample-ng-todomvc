@@ -1,5 +1,8 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
+<Page.actionBar>
+	<ActionBar title="Todos {N} + Angular 2"></ActionBar>
+</Page.actionBar>	
   <StackLayout>
-    <Label text="Loading..." cssClass="title"/>
+    <Label text="Loading..." class="title"/>
   </StackLayout>
 </Page>
