@@ -2,7 +2,7 @@ import 'reflect-metadata';
 import {TextView} from 'ui/text-view';
 import {topmost} from 'ui/frame';
 import {nativeScriptBootstrap} from 'nativescript-angular/application';
-import {Inject, Component, View, NgIf, NgFor} from 'angular2/angular2';
+import {Inject, Component, View} from 'angular2/core';
 import {TodoStore, Todo} from './services/store';
 import {Checkbox} from './checkbox';
 
@@ -16,12 +16,12 @@ import {Checkbox} from './checkbox';
     <Label text='ng-todo' class='title complete'></Label>
     <StackLayout orientation='vertical'>
         <StackLayout
-            *ng-for="#todo of todoStore.todos"
+            *ngFor="#todo of todoStore.todos"
             class="todo-item"
             (tap)="toggleSelected(todo)"
             (doubleTap)="edit(todo)"
             >
-                <DockLayout *ng-if="!todo.editing" stretchLastChild="true">
+                <DockLayout *ngIf="!todo.editing" stretchLastChild="true">
                     <Checkbox [checked]="todo.completed" (tap)="toggleCompletion(todo)"></Checkbox>
                     <Label
                         [class.complete]="todo.completed"
@@ -30,10 +30,10 @@ import {Checkbox} from './checkbox';
                         verticalAlignment="center"
                         minWidth="200"
                         [text]="todo.title"
-                        *ng-if="!todo.editing"
+                        *ngIf="!todo.editing"
                         dock="right"></Label>
                 </DockLayout>
-                <DockLayout *ng-if="todo.editing" stretchLastChild="true">
+                <DockLayout *ngIf="todo.editing" stretchLastChild="true">
                     <TextField
                         #title
                         class="todo-input"
@@ -45,7 +45,7 @@ import {Checkbox} from './checkbox';
                         (tap)="finishEditing(todo, title.text)"
                         dock="right"></Button>
                 </DockLayout>
-                <StackLayout orientation="horizontal" *ng-if="todo.selected && !todo.editing">
+                <StackLayout orientation="horizontal" *ngIf="todo.selected && !todo.editing">
                     <Button [text]="!todo.completed ? 'Complete!' : 'Undo complete'" (tap)="toggleCompletion(todo)"></Button>
                     <Button text="Edit" (tap)="edit(todo)"></Button>
                     <Button text="Delete" (tap)="delete(todo)"></Button>
