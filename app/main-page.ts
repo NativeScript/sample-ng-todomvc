@@ -7,12 +7,12 @@ import {TodoStore, Todo} from './services/store';
 import {Checkbox} from './checkbox';
 
 @Component({
-	selector: 'main',
+    selector: 'main',
     providers: [TodoStore],
     directives: [Checkbox],
-	template: `
-<StackLayout orientation='vertical'>
-    <Label text='ng-todo' class='title complete'></Label>
+    template: `
+<StackLayout class='card'>
+    <Button class="add-button" text='Add' (tap)='addNew($event)'></Button>
     <StackLayout orientation='vertical'>
         <StackLayout
             *ngFor="#todo of todoStore.todos"
@@ -51,18 +51,17 @@ import {Checkbox} from './checkbox';
                 </StackLayout>
         </StackLayout>
     </StackLayout>
-    <Button class="add-button" text='Add' (tap)='addNew($event)'></Button>
 </StackLayout>
 `,
 })
 export class MainPage {
     private  todoStore: TodoStore;
 
-	constructor() {
+    constructor() {
         this.todoStore = new TodoStore();
         this.todoStore.add("item 1", true);
         this.todoStore.add("item 2", false);
-	}
+    }
 
     addNew(eventData) {
         this.todoStore.add("new task", false);
