@@ -6,7 +6,6 @@ import {Inject, Component, View} from 'angular2/core';
 import {TodoStore, Todo} from './services/store';
 import {Checkbox} from './checkbox';
 
-
 @Component({
 	selector: 'main',
     providers: [TodoStore],
@@ -56,7 +55,7 @@ import {Checkbox} from './checkbox';
 </StackLayout>
 `,
 })
-class MainPage {
+export class MainPage {
     private  todoStore: TodoStore;
 
 	constructor() {
@@ -90,22 +89,4 @@ class MainPage {
     finishEditing(todo: Todo, newTitle: string) {
         this.todoStore.finishEditing(todo, newTitle);
     }
-}
-
-export function pageLoaded(args) {
-    var page = args.object;
-    page.bindingContext = "";
-
-    console.log('BOOTSTRAPPING...');
-    nativeScriptBootstrap(MainPage, []).then((appRef) => {
-        console.log('ANGULAR BOOTSTRAP DONE.');
-    }, (err) =>{
-        console.log('ERROR BOOTSTRAPPING ANGULAR');
-        let errorMessage = err.message + "\n\n" + err.stack;
-        console.log(errorMessage);
-
-        let view = new TextView();
-        view.text = errorMessage;
-        topmost().currentPage.content = view;
-    });
 }
