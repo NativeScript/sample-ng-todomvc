@@ -1,4 +1,30 @@
-﻿.title {
+﻿@import url('~/platform.css');
+
+Page {
+    background-color: #CCC;
+    font-size: 17;
+    font-family: sans-serif;
+}
+TextField {
+    margin: 10;
+    padding: 10;
+}
+Image {
+    margin-top: 20;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 80;
+}
+Button {
+    margin: 5;
+    padding: 5;
+}
+.card{
+    background-color: #FFF;
+    padding:10;
+    margin:10;
+}
+.title {
     font-size: 30;
     horizontal-align: center;
     margin:20;
@@ -27,10 +53,12 @@
     color: red;
 }
 
-.todo-item {
+.todo-item {   
 }
 
 .todo-text {
+    font-size: 30;
+    padding: 5;
 }
 
 .checkbox {
