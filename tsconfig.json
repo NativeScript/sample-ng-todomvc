@@ -10,18 +10,6 @@
         "emitDecoratorMetadata": true,
         "noEmitOnError": true
     },
-    "files": [
-        "app/app.ts",
-        "app/checkbox.ts",
-        "app/compat.d.ts",
-        "app/main-page.ts",
-        "app/services/store.ts",
-        "node_modules/tns-core-modules/tns-core-modules.base.d.ts"
-    ],
-    "filesGlob": [
-        "node_modules/tns-core-modules/tns-core-modules.base.d.ts",
-        "app/**/*.ts"
-    ],
     "exclude": [
         "node_modules",
         "platforms"
