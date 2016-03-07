@@ -1,6 +1,6 @@
 {
 	"nativescript": {
-		"id": "org.nativescript.nativescripttodomvc",
+		"id": "org.nativescript.samplengtodomvc",
 		"tns-android": {
 			"version": "1.6.2"
 		}
