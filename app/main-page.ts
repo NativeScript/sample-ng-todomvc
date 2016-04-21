@@ -2,7 +2,7 @@ import 'reflect-metadata';
 import {TextView} from 'ui/text-view';
 import {topmost} from 'ui/frame';
 import {nativeScriptBootstrap} from 'nativescript-angular/application';
-import {Inject, Component, View} from 'angular2/core';
+import {Inject, Component} from 'angular2/core';
 import {TodoStore, Todo} from './services/store';
 import {Checkbox} from './checkbox';
 
