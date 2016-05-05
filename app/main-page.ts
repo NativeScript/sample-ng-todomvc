@@ -15,7 +15,7 @@ import {Checkbox} from './checkbox';
     <Button class="add-button" text='Add' (tap)='addNew($event)'></Button>
     <StackLayout orientation='vertical'>
         <StackLayout
-            *ngFor="#todo of todoStore.todos"
+            *ngFor="let todo of todoStore.todos"
             class="todo-item"
             (tap)="toggleSelected(todo)"
             (doubleTap)="edit(todo)"
