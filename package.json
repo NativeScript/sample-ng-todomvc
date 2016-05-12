@@ -30,7 +30,7 @@
 	},
 	"homepage": "https://github.com/NativeScript/nativescript-angular",
 	"dependencies": {
-		"nativescript-angular": "0.1.1",
+		"nativescript-angular": "0.1.2",
 		"nativescript-unit-test-runner": "^0.3.3",
 		"tns-core-modules": "^2.0.0",
 		"nativescript-intl": "^0.0.2",
