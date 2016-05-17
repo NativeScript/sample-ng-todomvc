@@ -27,7 +27,7 @@ import {Checkbox} from './checkbox';
                         [class.incomplete]="!todo.completed"
                         class="todo-text"
                         verticalAlignment="center"
-                        minWidth="200"
+                        [style.minWidth]="200"
                         [text]="todo.title"
                         *ngIf="!todo.editing"
                         dock="right"></Label>
