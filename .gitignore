@@ -1,11 +1,12 @@
-node_modules
-built
-tags
-typings
+.vscode/
+hooks/
+lib/
+node_modules/
+platforms/
+tmp/
+typings/
 .baseDir.ts
 .tscache
 
 app/**/*.js
 app/**/*.map
-platforms
-lib
