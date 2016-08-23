@@ -49,6 +49,11 @@
     "zone.js": "^0.6.12"
   },
   "devDependencies": {
-    "nativescript-dev-typescript": "^0.3.1"
+    "babel-traverse": "6.13.0",
+    "babel-types": "6.13.0",
+    "babylon": "6.9.0",
+    "lazy": "1.0.11",
+    "nativescript-dev-typescript": "^0.3.1",
+    "typescript": "^1.8.10"
   }
 }
