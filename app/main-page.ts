@@ -8,7 +8,6 @@ import {Checkbox} from './checkbox';
 @Component({
     selector: 'main',
     providers: [TodoStore],
-    directives: [Checkbox],
     template: `
 <StackLayout class='card'>
     <Button class="add-button" text='Add' (tap)='addNew($event)'></Button>

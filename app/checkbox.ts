@@ -1,9 +1,7 @@
-import {Component, EventEmitter} from "@angular/core";
+import {Component, Input, Output, EventEmitter} from "@angular/core";
 
 @Component({
     selector: "Checkbox",
-    properties: ['checked : checked'],
-    events: ['tap'],
     template: `
     <Image
         [src]="checked ? 'res://checkbox_checked' : 'res://checkbox_unchecked'"
@@ -14,8 +12,8 @@ import {Component, EventEmitter} from "@angular/core";
     `
 })
 export class Checkbox {
-    public tap: EventEmitter<boolean> = new EventEmitter<boolean>();
-    public checked: boolean = false;
+    @Output() public tap: EventEmitter<boolean> = new EventEmitter<boolean>();
+    @Input() public checked: boolean = false;
 
     constructor() {
     }
