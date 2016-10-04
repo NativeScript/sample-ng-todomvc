@@ -3,6 +3,9 @@
     "id": "org.nativescript.samplengtodomvc",
     "tns-android": {
       "version": "2.3.0"
+    },
+    "tns-ios": {
+      "version": "2.3.0"
     }
   },
   "name": "todomvc",

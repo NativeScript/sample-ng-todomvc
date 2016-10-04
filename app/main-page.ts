@@ -15,12 +15,11 @@ import {Checkbox} from './checkbox';
         <StackLayout
             *ngFor="let todo of todoStore.todos"
             class="todo-item"
-            (tap)="toggleSelected(todo)"
-            (doubleTap)="edit(todo)"
-            >
+            (doubleTap)="edit(todo)">
                 <DockLayout *ngIf="!todo.editing" stretchLastChild="true">
                     <Checkbox [checked]="todo.completed" (tap)="toggleCompletion(todo)"></Checkbox>
                     <Label
+                        (tap)="toggleSelected(todo)"
                         [class.complete]="todo.completed"
                         [class.incomplete]="!todo.completed"
                         class="todo-text"
