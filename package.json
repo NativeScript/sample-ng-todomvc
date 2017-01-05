@@ -41,7 +41,7 @@
     "@angular/platform-browser-dynamic": "~2.3.1",
     "@angular/forms": "~2.3.1",
     "@angular/router": "~3.3.1",
-    "rxjs": "~5.0.0",
+    "rxjs": "5.0.0-rc.4",
     "reflect-metadata": "~0.1.8"
   },
   "devDependencies": {
